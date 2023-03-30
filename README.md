@@ -1,0 +1,1 @@
+# dapr-pluggable-component-supabase
