@@ -1,0 +1,12 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: pluggable-supabase
+spec:
+  type: state.supabase
+  version: v1
+  metadata:
+  - name: projectUrl
+    value: ""
+  - name: projectApiKey
+    value: ""
