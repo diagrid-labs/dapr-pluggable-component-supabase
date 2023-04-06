@@ -19,10 +19,7 @@ namespace SupabaseStateStore
 
         public async Task<StateStoreGetResponse?> GetAsync(StateStoreGetRequest request, CancellationToken cancellationToken = default)
         {
-            var kv = await _supabaseClient.From<KeyValue>()
-                .Select(x => new object[] { x.Key, x.Value })
-                .Where(x => x.Key == request.Key)
-                .Single(cancellationToken);
+            KeyValue? kv = await GetKV(request.Key, cancellationToken);
 
             if (kv != null)
             {
@@ -33,6 +30,7 @@ namespace SupabaseStateStore
 
             return new StateStoreGetResponse();
         }
+
 
         public async Task InitAsync(MetadataRequest request, CancellationToken cancellationToken = default)
         {
@@ -49,7 +47,25 @@ namespace SupabaseStateStore
                 Value = Encoding.UTF8.GetString(request.Value.Span)
             };
 
-            await _supabaseClient.From<KeyValue>().Insert(newKV, cancellationToken: cancellationToken);
+            KeyValue? existingKV = await GetKV(request.Key, cancellationToken);
+
+            if (existingKV != null)
+            {
+                newKV.Id = existingKV.Id;
+                await _supabaseClient.From<KeyValue>().Update(newKV, cancellationToken: cancellationToken);
+                return;
+            }
+            else
+            {
+                await _supabaseClient.From<KeyValue>().Insert(newKV, cancellationToken: cancellationToken);
+            }
+        }
+        private async Task<KeyValue?> GetKV(string key, CancellationToken cancellationToken)
+        {
+            return await _supabaseClient.From<KeyValue>()
+                            .Select(x => new object[] { x.Id, x.Key, x.Value })
+                            .Where(x => x.Key == key)
+                            .Single(cancellationToken);
         }
     }
 }

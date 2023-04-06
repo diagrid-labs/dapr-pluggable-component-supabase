@@ -1,9 +1,17 @@
-PATCH http://localhost:3500/v1.0/state/pluggable-supabase
+@key=dapr-supabase
+
+POST http://localhost:3500/v1.0/state/pluggable-supabase
 Content-Type: application/json
 
 [
     {
-        "key": "dapr-supabase",
+        "key": "{{key}}",
         "value": "Does this work?"
     }
 ]
+
+###
+GET http://localhost:3500/v1.0/state/pluggable-supabase/{{key}}
+
+###
+DELETE http://localhost:3500/v1.0/state/pluggable-supabase/{{key}}
