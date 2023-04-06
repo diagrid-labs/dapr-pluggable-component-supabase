@@ -1,0 +1,9 @@
+PATCH http://localhost:3500/v1.0/state/pluggable-supabase
+Content-Type: application/json
+
+[
+    {
+        "key": "dapr-supabase",
+        "value": "Does this work?"
+    }
+]
