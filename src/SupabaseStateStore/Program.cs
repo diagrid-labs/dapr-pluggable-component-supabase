@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 var app = DaprPluggableComponentsApplication.Create();
 
 app.RegisterService(
-    "pluggable-supabase",
+    "supabase",
     serviceBuilder =>
     {
         serviceBuilder.RegisterStateStore<SupabaseService>();
