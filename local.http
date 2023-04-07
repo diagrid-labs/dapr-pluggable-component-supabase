@@ -1,4 +1,4 @@
-@key=dapr-supabase
+@key=key1
 
 POST http://localhost:3500/v1.0/state/pluggable-supabase
 Content-Type: application/json
@@ -6,7 +6,7 @@ Content-Type: application/json
 [
     {
         "key": "{{key}}",
-        "value": "Does this work?"
+        "value": "This is stored in Supabase!"
     }
 ]
 

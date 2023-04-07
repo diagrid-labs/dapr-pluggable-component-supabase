@@ -44,14 +44,16 @@ You'll need the Supabase project URL and public API key to configure the Dapr co
     dapr run --app-id myapp --dapr-http-port 3500
     ```
 
-2. Set a new state via curl:
+2. Set a new state using a REST client:
 
     ```bash
+    curl --request POST --url http://localhost:3500/v1.0/state/pluggable-supabase --header 'content-type: application/json' --data '[{"key": "key1","value": "This is stored in Supabase!"}]'
     ```
 
-3. Retrieve the new state via curl:
+3. Retrieve the new state using a REST client:
 
     ```bash
+    curl --request GET --url http://localhost:3500/v1.0/state/pluggable-supabase/key1
     ```
 
 ## Resources
