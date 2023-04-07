@@ -10,8 +10,8 @@ A prototype Dapr pluggable state store component that uses Supabase Tables.
 
 ## Supabase Setup
 
-1. Create a new Supabase project
-2. Create a new table with the following specifications:
+1. Create a new Supabase project.
+2. Create a new database table with the following specifications:
     - Name: `dapr_state_store`
     - Primary Key: `id`, (int8, not null)
     - Columns:
@@ -36,10 +36,26 @@ You'll need the Supabase project URL and public API key to configure the Dapr co
     dotnet run
     ```
 
-## Run the Dapr process
+## Run the Dapr process and test the state store
 
 1. Open a new terminal and use the Dapr CLI to run the Dapr process
 
     ```bash
     dapr run --app-id myapp --dapr-http-port 3500
     ```
+
+2. Set a new state via curl:
+
+    ```bash
+    ```
+
+3. Retrieve the new state via curl:
+
+    ```bash
+    ```
+
+## Resources
+
+- [Dapr Pluggable Components Overview](https://docs.dapr.io/developing-applications/develop-components/pluggable-components/pluggable-components-overview/)
+- [Dapr Pluggable Components .NET SDK](https://docs.dapr.io/developing-applications/develop-components/pluggable-components/pluggable-components-sdks/pluggable-components-dotnet/)
+- 
