@@ -1,6 +1,8 @@
-# Dapr pluggable state store component for Supabase
+# Dapr pluggable Supabase state store component
 
-A prototype [Dapr](https://docs.dapr.io/) pluggable state store component that uses [Supabase Tables](https://supabase.com/docs/guides/database/tables).
+A demo [Dapr](https://docs.dapr.io/) pluggable component that uses Supabase as the state store.
+
+This demo consists of a C#/.NET 7 application that implements a Dapr [pluggable component](https://docs.dapr.io/developing-applications/develop-components/pluggable-components/pluggable-components-overview/) capable of using [Supabase Tables](https://supabase.com/docs/guides/database/tables) for the state store. To test the pluggable component, the [state management HTTP API](https://docs.dapr.io/reference/api/state_api/) is used.
 
 ## Prerequisites
 
@@ -11,7 +13,7 @@ A prototype [Dapr](https://docs.dapr.io/) pluggable state store component that u
 
 ## Supabase Setup
 
-1. Using the Supabase dashboard, create a new Supabase project.
+1. Using the Supabase dashboard, create a new project.
 2. Create a new database table with the following specifications:
     - Name: `dapr_state_store`
     - Primary Key: `id`, (int8, not null)
@@ -36,7 +38,7 @@ A prototype [Dapr](https://docs.dapr.io/) pluggable state store component that u
 
 You'll need the Supabase project URL and public API key to configure the Dapr component file in the next section. This information is found in the Supabase portal under the `Settings > API` tab.
 
-## Update the Dapr Pluggable Supabase Component file
+## Update the Dapr pluggable Supabase component file
 
 1. Clone this repo locally and navigate to the `resources` folder.
 2. Rename the `resources\pluggableSupabase.yml.template` file to `resources\pluggableSupabase.yml`.
