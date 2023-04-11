@@ -85,8 +85,11 @@ You'll need the Supabase project URL and public API key to configure the Dapr co
 
     Or have a look in the Supabase dashboard to see the new state record.
 
+🎉 Congratulations! 🎉 You've successfully used the Dapr pluggable Supabase state store component.
+
 ## Resources
 
 - [Dapr Pluggable Components Overview](https://docs.dapr.io/developing-applications/develop-components/pluggable-components/pluggable-components-overview/)
 - [Dapr Pluggable Components .NET SDK](https://docs.dapr.io/developing-applications/develop-components/pluggable-components/pluggable-components-sdks/pluggable-components-dotnet/)
 - [Supabase C# SDK](https://supabase.com/docs/reference/csharp/installing)
+- [Postgrest-csharp library](https://github.com/supabase-community/postgrest-csharp)
