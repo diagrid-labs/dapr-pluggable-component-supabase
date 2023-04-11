@@ -1,6 +1,6 @@
 # Dapr pluggable state store component for Supabase
 
-A prototype Dapr pluggable state store component that uses Supabase Tables.
+A prototype [Dapr](https://docs.dapr.io/) pluggable state store component that uses [Supabase Tables](https://supabase.com/docs/guides/database/tables).
 
 ## Prerequisites
 
@@ -34,7 +34,7 @@ A prototype Dapr pluggable state store component that uses Supabase Tables.
         ) tablespace pg_default;
     ```
 
-You'll need the Supabase project URL and public API key to configure the Dapr component in the next section. This information is found in the Supabase portal under the `Settings > API` tab.
+You'll need the Supabase project URL and public API key to configure the Dapr component file in the next section. This information is found in the Supabase portal under the `Settings > API` tab.
 
 ## Update the Dapr Pluggable Supabase Component file
 
@@ -112,7 +112,7 @@ You'll need the Supabase project URL and public API key to configure the Dapr co
 
     Or have a look in the Supabase dashboard to see the new state record.
 
-🎉 Congratulations! 🎉 You've successfully used the Dapr pluggable Supabase state store component.
+🎉 Congratulations! You've successfully used the Dapr pluggable Supabase state store component. 🎉
 
 ## Resources
 
