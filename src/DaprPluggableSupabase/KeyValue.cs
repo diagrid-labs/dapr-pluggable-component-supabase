@@ -1,7 +1,7 @@
 using Postgrest.Attributes;
 using Postgrest.Models;
 
-namespace SupabaseStateStore
+namespace DaprPluggableSupabase
 {
     [Table("dapr_state_store")]
     public class KeyValue : BaseModel

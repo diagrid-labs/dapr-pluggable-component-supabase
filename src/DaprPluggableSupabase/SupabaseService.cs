@@ -2,9 +2,9 @@ using System.Text;
 using Dapr.PluggableComponents.Components;
 using Dapr.PluggableComponents.Components.StateStore;
 
-namespace SupabaseStateStore
+namespace DaprPluggableSupabase
 {
-    internal sealed class SupabaseService : IStateStore
+    internal sealed class SupabaseStateStore : IStateStore
     {
         private Supabase.Client _supabaseClient;
         private const string PROJECT_APIKEY_KEYWORD = "projectApiKey";

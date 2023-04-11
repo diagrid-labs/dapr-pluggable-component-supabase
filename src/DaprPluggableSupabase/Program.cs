@@ -1,5 +1,5 @@
 using Dapr.PluggableComponents;
-using SupabaseStateStore;
+using DaprPluggableSupabase;
 
 var builder = WebApplication.CreateBuilder(args);
 var app = DaprPluggableComponentsApplication.Create();
@@ -8,7 +8,7 @@ app.RegisterService(
     "supabase",
     serviceBuilder =>
     {
-        serviceBuilder.RegisterStateStore<SupabaseService>();
+        serviceBuilder.RegisterStateStore<SupabaseStateStore>();
     });
 
 app.Run();
