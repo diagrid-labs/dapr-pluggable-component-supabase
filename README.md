@@ -55,7 +55,11 @@ You'll need the Supabase project URL and public API key to configure the Dapr co
 
    > When the Dapr CLI is run, the all the component files in this folder will loaded so the pluggable Supabase component should be available.
 
-## Run the DaprPluggableSupabase project
+## Run the DaprPluggableSupabase service
+
+Regular Dapr components are part of the Dapr runtime and don't require additional processes to run. Pluggable components however, are not part of the Dapr runtime and need to be started separately, which is done in this section.
+
+The `DaprPluggableSupabase` project in this repo implements the Dapr state store interface and uses the [Supabase C# library](https://github.com/supabase-community/supabase-csharp) to access a Supabase table.
 
 1. Open a terminal and navigate to the `src/DaprPluggableSupabase` folder.
 2. Build the project:
@@ -70,7 +74,7 @@ You'll need the Supabase project URL and public API key to configure the Dapr co
     dotnet run
     ```
 
-## Run the Dapr process and test the state store
+## Run the Dapr process and test the Supabase state store
 
 1. Open a new terminal and use the Dapr CLI to run the Dapr process
 
