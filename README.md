@@ -7,7 +7,7 @@ A prototype Dapr pluggable state store component that uses Supabase Tables.
 1. [.NET 7 SDK](https://dotnet.microsoft.com/download/dotnet/7.0)
 2. [Dapr CLI](https://docs.dapr.io/getting-started/install-dapr-cli/)
 3. [Supabase account](https://supabase.io/)
-4. Supported OS: macOS, Linux (Windows with WSL should work as well)
+4. Supported OS: macOS, Linux, [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) on Windows
 
 ## Supabase Setup
 
