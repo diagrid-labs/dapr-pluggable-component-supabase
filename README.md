@@ -71,16 +71,43 @@ You'll need the Supabase project URL and public API key to configure the Dapr co
     dapr run --app-id myapp --dapr-http-port 3500
     ```
 
-2. Set a new state using a REST client:
+    *Expected output:*
+
+    The output should contain an INFO message that the pluggable-supabase component is loaded:
+
+    ```bash
+    INFO[0000] component loaded. name: pluggable-supabase, type: state.supabase/v1 
+    ```
+
+    The log should end with:
+
+    ```bash
+    ℹ️  Dapr sidecar is up and running.
+    ✅  You're up and running! Dapr logs will appear here.
+    ```
+
+2. Set a new state by making a POST request:
 
     ```bash
     curl --request POST --url http://localhost:3500/v1.0/state/pluggable-supabase --header 'content-type: application/json' --data '[{"key": "key1","value": "This is stored in Supabase!"}]'
     ```
 
-3. Retrieve the new state using a REST client:
+    *Expected output:*
+    ```http
+    HTTP 204 No Content
+    ```
+
+3. Retrieve the new state using a GET request:
 
     ```bash
     curl --request GET --url http://localhost:3500/v1.0/state/pluggable-supabase/key1
+    ```
+
+    *Expected output:*
+    ```http
+    HTTP 200 OK
+
+    "This is stored in Supabase!"
     ```
 
     Or have a look in the Supabase dashboard to see the new state record.
