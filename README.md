@@ -4,6 +4,8 @@ A demo [Dapr](https://docs.dapr.io/) pluggable component that uses Supabase as t
 
 This demo consists of a C#/.NET 7 application that implements a Dapr [pluggable component](https://docs.dapr.io/developing-applications/develop-components/pluggable-components/pluggable-components-overview/) capable of using [Supabase Tables](https://supabase.com/docs/guides/database/tables) for the state store. To test the pluggable component, the [state management HTTP API](https://docs.dapr.io/reference/api/state_api/) is used.
 
+![Calling the State Store API ](images/dapr-supabase-pluggable-v2.png)
+
 ## Prerequisites
 
 1. [.NET 7 SDK](https://dotnet.microsoft.com/download/dotnet/7.0)
@@ -98,6 +100,7 @@ You'll need the Supabase project URL and public API key to configure the Dapr co
     ```
 
     *Expected output:*
+
     ```http
     HTTP 204 No Content
     ```
@@ -109,6 +112,7 @@ You'll need the Supabase project URL and public API key to configure the Dapr co
     ```
 
     *Expected output:*
+
     ```http
     HTTP 200 OK
 
