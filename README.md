@@ -51,9 +51,9 @@ You'll need the Supabase project URL and public API key to configure the Dapr co
    > The `pluggableSupabase.yml` file is added to .gitignore so it won't be accidentally committed to source control for this demo app. For production use, the yaml files **should** be checked into source control and [secret store references](https://docs.dapr.io/operations/components/component-secrets/) should be used, instead of plain text values.
 
 3. Open the `pluggableSupabase.yml` file and update the values for `projectUrl` and `projectApiKey`.
-4. Save the file and copy it to the users Dapr components folder: `~/.dapr/components`.
+4. Save the file and copy it to the user's Dapr components folder: `~/.dapr/components`.
 
-   > When the Dapr CLI is run, the all the component files in this folder will loaded so the pluggable Supabase component should be available.
+   > When the Dapr CLI is run, all the component files in this folder will be loaded, so the pluggable Supabase component should be available.
 
 ## Run the DaprPluggableSupabase service
 
