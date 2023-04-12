@@ -25,7 +25,7 @@ This demo consists of a C#/.NET 7 application that implements a Dapr [pluggable 
         - `value` (text, null)
     - RLS (Row Level Security) is disabled
 
-        > Note that for production use, [RLS](https://supabase.com/docs/learn/auth-deep-dive/auth-row-level-security) should be enabled and access policies should be added to the table.
+        > Note that for production use, [RLS](https://supabase.com/docs/learn/auth-deep-dive/auth-row-level-security) should be enabled, and access policies should be added to the table.
 
     *Table definition:*
 
