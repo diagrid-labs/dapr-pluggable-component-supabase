@@ -8,7 +8,7 @@ app.RegisterService(
     "supabase",
     serviceBuilder =>
     {
-        serviceBuilder.RegisterStateStore<SupabaseBucketStateStore>();
+        serviceBuilder.RegisterStateStore<SupabaseStateStore>();
     });
 
 app.Run();
