@@ -13,9 +13,9 @@ namespace DaprPluggableSupabase
         public DateTime CreatedAt { get; set; }
 
         [Column("key")]
-        public string Key { get; set; }
+        public string? Key { get; set; }
 
         [Column("value")]
-        public string Value { get; set; }
+        public string? Value { get; set; }
     }
 }

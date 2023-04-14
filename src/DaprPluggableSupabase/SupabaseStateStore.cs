@@ -6,7 +6,10 @@ namespace DaprPluggableSupabase
 {
     internal sealed class SupabaseStateStore : IStateStore
     {
+#nullable disable
         private Supabase.Client _supabaseClient;
+#nullable enable
+
         private const string PROJECT_APIKEY_KEYWORD = "projectApiKey";
         private const string PROJECT_URL_KEYWORD = "projectUrl";
 
@@ -21,7 +24,7 @@ namespace DaprPluggableSupabase
         {
             KeyValue? kv = await GetKV(request.Key, cancellationToken);
 
-            if (kv != null)
+            if (kv != null && kv.Value != null)
             {
                 var valueAsBytes = Encoding.UTF8.GetBytes(kv.Value);
                 var response = new StateStoreGetResponse() { Data = valueAsBytes };
@@ -34,7 +37,17 @@ namespace DaprPluggableSupabase
 
         public async Task InitAsync(MetadataRequest request, CancellationToken cancellationToken = default)
         {
-            _supabaseClient = new Supabase.Client(request.Properties[PROJECT_URL_KEYWORD], request.Properties[PROJECT_APIKEY_KEYWORD]);
+            if (!request.Properties.TryGetValue(PROJECT_URL_KEYWORD, out string? projectUrl))
+            {
+                throw new InvalidOperationException($"Missing required property \"{PROJECT_URL_KEYWORD}\" in component file.");
+            }
+
+            if (!request.Properties.TryGetValue(PROJECT_APIKEY_KEYWORD, out string? projectApiKey))
+            {
+                throw new InvalidOperationException($"Missing required property \"{PROJECT_APIKEY_KEYWORD}\" in component file.");
+            }
+
+            _supabaseClient = new Supabase.Client(projectUrl, projectApiKey);
             await _supabaseClient.InitializeAsync();
         }
 
@@ -60,10 +73,13 @@ namespace DaprPluggableSupabase
                 await _supabaseClient.From<KeyValue>().Insert(newKV, cancellationToken: cancellationToken);
             }
         }
+
         private async Task<KeyValue?> GetKV(string key, CancellationToken cancellationToken)
         {
             return await _supabaseClient.From<KeyValue>()
+#nullable disable
                             .Select(x => new object[] { x.Id, x.Key, x.Value })
+#nullable enable
                             .Where(x => x.Key == key)
                             .Single(cancellationToken);
         }
