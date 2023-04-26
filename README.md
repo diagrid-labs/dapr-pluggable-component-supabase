@@ -6,6 +6,8 @@ This demo consists of a C#/.NET 7 application that implements a Dapr [pluggable 
 
 ![Calling the State Store API ](images/dapr-supabase-pluggable-v2.png)
 
+Please read the [blog post](https://www.diagrid.io/blog/dapr-supabase-component) that accompanies this repo for more information.
+
 ## Prerequisites
 
 1. [.NET 7 SDK](https://dotnet.microsoft.com/download/dotnet/7.0)
@@ -45,8 +47,27 @@ You'll need the Supabase project URL and public API key to configure the Dapr co
 
 ## Update the Dapr pluggable Supabase component file
 
-1. Clone this repo locally and navigate to the `resources` folder.
-2. Rename the `resources\pluggableSupabase.yml.template` file to `resources\pluggableSupabase.yml`.
+Dapr uses a modular design where functionality is delivered as a [component](https://docs.dapr.io/concepts/components-concept/). A component file contains the specification of a component, including the name, the component type, and related metadata that is specific to connecting with the underlying resource. The component file for the Supabase state store looks like this:
+
+```yaml
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: pluggable-supabase
+spec:
+  type: state.supabase
+  version: v1
+  metadata:
+  - name: projectUrl
+    value: ""
+  - name: projectApiKey
+    value: ""
+```
+
+The value of the `spec.type` field, `state.supabase`, consists of two parts: the component type (`state`), and the socket name (`supabase`). The socket name needs to match with the socket name argument provided in the `RegisterService` method in the `Program.cs` class of section 2. A template of this component file is available in the repository, follow these steps to update the file, so it can be used locally.
+
+1. Navigate to the `resources` folder in this repository.
+2. Rename the `resources/pluggableSupabase.yml.template` file to `resources/pluggableSupabase.yml`.
 
    > The `pluggableSupabase.yml` file is added to .gitignore so it won't be accidentally committed to source control for this demo app. For production use, the yaml files **should** be checked into source control and [secret store references](https://docs.dapr.io/operations/components/component-secrets/) should be used, instead of plain text values.
 
