@@ -1,0 +1,49 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Dapr Pluggable Component",
+  "steps": [
+    {
+      "directory": "src/DaprPluggableSupabase",
+      "description": "## DaprPluggableSupase folder\r\n\r\nThis folder contains the ASP.NET web application that hosts the pluggable component and connects with Supabase."
+    },
+    {
+      "file": "src/DaprPluggableSupabase/DaprPluggableSupabase.csproj",
+      "description": "## NuGet Packages\r\n\r\nThe project contains two package references:\r\n\r\n- **Dapr.PluggableComponents.AspNetCore**; this provides the types and interfaces to create a pluggable Dapr component.\r\n- **supabase-csharp**; this is the library to interact with Supabase.",
+      "line": 9
+    },
+    {
+      "file": "src/DaprPluggableSupabase/KeyValue.cs",
+      "description": "## KeyValue model\r\n\r\nThis `KeyValue` class inherits from `BaseModel`, a base class from the Supabase library, and uses attributes that maps the class and properties to the Postgres database used by Supabase.",
+      "line": 4
+    },
+    {
+      "file": "src/DaprPluggableSupabase/SupabaseStateStore.cs",
+      "description": "## SupabaseStateStore\r\n\r\nThis `SupabaseStateStore` class implements the `IStateStore` interface. All Dapr state store components implement this interface via these methods:\r\n\r\n- **DeleteAsync**; this will delete a value from the store.\r\n- **GetAsync**; this will retrieve a value from the store.\r\n- **SetAsync**; this will insert/update a value to the store.\r\n\r\nAll methods use the Supabase C# client to manage the data via the `KeyValue` model.",
+      "line": 5
+    },
+    {
+      "file": "src/DaprPluggableSupabase/SupabaseStateStore.cs",
+      "description": "## SupabaseStateStore InitAsync\r\n\r\nThe `IStateStore` interface inherits the `IPluggableComponent` interface that contains only one method, `InitAsync`. This method used to initialize the state store. In this case, it is used to create an instance of the `Supabase.Client`.\r\n\r\nThe code first checks if two properties are present in the `MetadataRequest`:\r\n\r\n- \"projectApiKey\"\r\n- \"projectUrl\"\r\n\r\nThese are two values that the `Supabase.Client` requires when a new instance is created. The values are provided via the component yml file located in the `resources` folder.",
+      "line": 38
+    },
+    {
+      "file": "resources/pluggableSupabase.yml.template",
+      "description": "## Component file\r\n\r\nThis is the component file that the Dapr pluggable component uses to connect to Supabase.\r\n\r\nThe value of the `spec.type` field, `state.supabase`, consists of two parts: the component type (`state`), and the socket name (`supabase`). Note that the socketname should match with the socket name in the app registration in the `Program.cs` file.\r\n\r\n- Rename the file to `pluggableSupabase.yml` and populate the `projectUrl` and `projectApiKey` metadata values, which are obtained from the Supabase dashboard (Settings > API tab).\r\n\r\n- Save the file and copy it to the user's Dapr components folder: `~/.dapr/components`.\r\n\r\n> When the Dapr CLI is run, all the component files in this folder will be loaded, so the pluggable Supabase component should be available.",
+      "line": 4
+    },
+    {
+      "file": "src/DaprPluggableSupabase/Program.cs",
+      "description": "## Program\r\n\r\nThe `DaprPluggableComponentsApplication.Create` method is used to create a pluggable component application.\r\n\r\nThe `RegisterService` method takes two arguments:\r\n- The socket name, \"supabase\", in this case.\r\n- An action that will register the `SupabaseStateStore` class as a state store for this application.",
+      "line": 5
+    },
+    {
+      "directory": "src/DaprPluggableSupabase",
+      "description": "## Build and Run\r\n\r\nNow navigate to the `src/DaprPluggableSupabase` folder to build, and run the pluggable component locally:\r\n\r\n>> cd src/DaprPluggableSupabase\r\n\r\n>> dotnet build\r\n\r\n>> dotnet run",
+    },
+    {
+      "file": "local.http",
+      "description": "Use the POST/GET/DELETE requests in this file to manipulate data in Supabase.\r\n\r\nNote that the `pluggable-supabase` part in the urls correspond to the component name in the component yml file.",
+      "line": 3
+    }
+  ]
+}
