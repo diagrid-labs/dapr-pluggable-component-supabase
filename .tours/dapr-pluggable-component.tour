@@ -41,7 +41,7 @@
     },
     {
       "directory": "src/DaprPluggableSupabase",
-      "description": "## Build and Run\r\n\r\nNow navigate to the `src/DaprPluggableSupabase` folder to build, and run the pluggable component locally:\r\n\r\n>> cd src/DaprPluggableSupabase\r\n\r\n>> dotnet build\r\n\r\n>> dotnet run"
+      "description": "## Build and Run\r\n\r\nNow navigate to the `src/DaprPluggableSupabase` folder to build, and run the pluggable component locally:\r\n\r\n>> cd src/DaprPluggableSupabase\r\n\r\n>> dotnet build\r\n\r\n>> dotnet run\r\n\r\nIn a new terminal start the Dapr process:\r\n\r\n>> dapr run --app-id myapp --dapr-http-port 3500"
     },
     {
       "file": "local.http",
