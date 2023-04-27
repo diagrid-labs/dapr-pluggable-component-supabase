@@ -3,6 +3,9 @@
   "title": "Dapr Pluggable Component",
   "steps": [
     {
+      "description": "## Creating a Dapr pluggable component for Supabase\r\n\r\nThis code tour will guide you through the source code that belongs to this [blog post](https://www.diagrid.io/blog/dapr-supabase-component). \r\n\r\nThis tour is not a replacement for the blog post, the post contains more detailed information, especially about the table creation in Supabase, which is not part of this code tour.\r\n\r\nYou'll learn how to use the Dapr pluggable component .NET SDK and the Supabase C# library to build a pluggable state store component that uses Supabase tables.\r\n\r\n![Dapr pluggable component for Supabase](./images/dapr-supabase-pluggable-v2.png)\r\n\r\n### Prerequisites\r\n\r\n1. [.NET 7 SDK](https://dotnet.microsoft.com/download/dotnet/7.0)\r\n2. [Dapr CLI](https://docs.dapr.io/getting-started/install-dapr-cli/)\r\n3. A Supabase account, you can [sign up](https://app.supabase.com/sign-up) for free.\r\n4. Supported OS: macOS, Linux, [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) on Windows."
+    },
+    {
       "directory": "src/DaprPluggableSupabase",
       "description": "## DaprPluggableSupase folder\r\n\r\nThis folder contains the ASP.NET web application that hosts the pluggable component and connects with Supabase."
     },
@@ -38,7 +41,7 @@
     },
     {
       "directory": "src/DaprPluggableSupabase",
-      "description": "## Build and Run\r\n\r\nNow navigate to the `src/DaprPluggableSupabase` folder to build, and run the pluggable component locally:\r\n\r\n>> cd src/DaprPluggableSupabase\r\n\r\n>> dotnet build\r\n\r\n>> dotnet run",
+      "description": "## Build and Run\r\n\r\nNow navigate to the `src/DaprPluggableSupabase` folder to build, and run the pluggable component locally:\r\n\r\n>> cd src/DaprPluggableSupabase\r\n\r\n>> dotnet build\r\n\r\n>> dotnet run"
     },
     {
       "file": "local.http",
